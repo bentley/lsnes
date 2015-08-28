@@ -176,8 +176,8 @@ void lua_state::set_memory_limit(size_t limit_mb)
 	L.set_memory_limit(limit_mb << 20);
 }
 
-lua_state::lua_state(lua::state& _L, command::group& _command, settingvar::group& settings)
-	: L(_L), command(_command),
+lua_state::lua_state(lua::state& L_, command::group& _command, settingvar::group& settings)
+	: L(L_), command(_command),
 	resetcmd(command, CLUA::reset, [this]() { this->do_reset(); }),
 	evalcmd(command, CLUA::eval, [this](const std::string& a) { this->do_eval_lua(a); }),
 	evalcmd2(command, CLUA::eval2, [this](const std::string& a) { this->do_eval_lua(a); }),

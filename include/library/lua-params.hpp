@@ -125,8 +125,8 @@ public:
 /**
  * Make
  */
-	parameters(state& _L, const std::string& _fname)
-		: L(_L), fname(_fname), next(1)
+	parameters(state& L_, const std::string& _fname)
+		: L(L_), fname(_fname), next(1)
 	{
 	}
 /**

@@ -222,9 +222,9 @@ namespace
 		fnraw_t fn = (fnraw_t)_fn;
 		//The function is always run in non-set_interruptable mode.
 		try {
-			state _L(*lstate, L);
+			state L_(*lstate, L);
 			lstate->set_interruptable_flag(false);
-			int r = fn(_L);
+			int r = fn(L_);
 			lstate->set_interruptable_flag(true);
 			return r;
 		} catch(std::exception& e) {
@@ -621,8 +621,8 @@ void state::do_unregister(const std::string& name, callback_list& callback)
 		state->callbacks.erase(name);
 }
 
-state::callback_list::callback_list(state& _L, const std::string& _name, const std::string& fncbname)
-	: L(_L), name(_name), fn_cbname(fncbname)
+state::callback_list::callback_list(state& L_, const std::string& _name, const std::string& fncbname)
+	: L(L_), name(_name), fn_cbname(fncbname)
 {
 	L.do_register(name, *this);
 }
@@ -639,28 +639,28 @@ state::callback_list::~callback_list()
 	}
 }
 
-void state::callback_list::_register(state& _L)
+void state::callback_list::_register(state& L_)
 {
 	callbacks.push_back(0);
-	_L.pushlightuserdata(&*callbacks.rbegin());
-	_L.pushvalue(-2);
-	_L.rawset(LUA_REGISTRYINDEX);
+	L_.pushlightuserdata(&*callbacks.rbegin());
+	L_.pushvalue(-2);
+	L_.rawset(LUA_REGISTRYINDEX);
 }
 
-void state::callback_list::_unregister(state& _L)
+void state::callback_list::_unregister(state& L_)
 {
 	for(auto i = callbacks.begin(); i != callbacks.end();) {
-		_L.pushlightuserdata(&*i);
-		_L.rawget(LUA_REGISTRYINDEX);
-		if(_L.rawequal(-1, -2)) {
+		L_.pushlightuserdata(&*i);
+		L_.rawget(LUA_REGISTRYINDEX);
+		if(L_.rawequal(-1, -2)) {
 			char* key = &*i;
-			_L.pushlightuserdata(key);
-			_L.pushnil();
-			_L.rawset(LUA_REGISTRYINDEX);
+			L_.pushlightuserdata(key);
+			L_.pushnil();
+			L_.rawset(LUA_REGISTRYINDEX);
 			i = callbacks.erase(i);
 		} else
 			i++;
-		_L.pop(1);
+		L_.pop(1);
 	}
 }
 

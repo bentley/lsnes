@@ -24,7 +24,7 @@ void quit_lua() throw();
 
 struct lua_state
 {
-	lua_state(lua::state& _L, command::group& _command, settingvar::group& settings);
+	lua_state(lua::state& L_, command::group& _command, settingvar::group& settings);
 	~lua_state();
 
 	lua::state::callback_list* on_paint;

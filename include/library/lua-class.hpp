@@ -163,7 +163,7 @@ public:
 /**
  * Lookup by name in given Lua state.
  *
- * Parameter _L: The Lua state to look in.
+ * Parameter L_: The Lua state to look in.
  * Parameter _name: The name of the class.
  * Returns: The class instance, or NULL if no match.
  */
