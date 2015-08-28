@@ -8,7 +8,7 @@ GAMBATTE_LIBRARY=gambatte/libgambatte/libgambatte.$(ARCHIVE_SUFFIX)
 .PRECIOUS: %.$(OBJECT_SUFFIX) %.files
 
 __all__.files: $(OBJECTS) ../../../$(GAMBATTE_LIBRARY)
-	lua ../../genfilelist.lua $^ >$@
+	$(LUA) ../../genfilelist.lua $^ >$@
 	echo $(GAMBATTE_LDFLAGS) ../$(GAMBATTE_LIBRARY) >__all__.ldflags
 
 ../../../$(GAMBATTE_LIBRARY): forcelook
@@ -25,7 +25,7 @@ else
 
 OBJECTS=
 __all__.files: $(OBJECTS)
-	lua ../../genfilelist.lua $^ >$@
+	$(LUA) ../../genfilelist.lua $^ >$@
 	echo >__all__.ldflags
 
 endif

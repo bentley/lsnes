@@ -65,6 +65,7 @@ FONT_SRC=unifontfull-5.1.20080820.hex
 # - Usually either 'lua' or 'lua5.2'.
 # - Default value is 'lua'.
 LUA=lua
+LUAC=luac
 
 # Regex package to use.
 # Currently supported:

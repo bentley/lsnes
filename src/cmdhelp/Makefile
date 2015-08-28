@@ -6,7 +6,7 @@ JSON_SRC=$(patsubst %.json,%.cpp,$(JSON_FILES))
 JSON_OBJECTS=$(patsubst %.json,%.$(OBJECT_SUFFIX),$(JSON_FILES))
 
 __all__.files: $(JSON_OBJECTS)  inverselist.$(OBJECT_SUFFIX)
-	lua ../genfilelist.lua $^ >$@
+	$(LUA) ../genfilelist.lua $^ >$@
 	touch $(ALLFLAGS)
 
 mkstubs$(DOT_EXECUTABLE_SUFFIX): mkstubs.cpp ../library/json.cpp ../library/utf8.cpp ../library/string.cpp ../library/hex.cpp  ../library/eatarg.cpp ../library/int24.cpp

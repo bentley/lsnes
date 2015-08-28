@@ -5,7 +5,7 @@ PLATFORMS_FILES=$(patsubst %,%/$(ALLFILES),$(PLATFORMS))
 PLATFORMS_FLAGS=$(patsubst %,%/$(ALLFLAGS),$(PLATFORMS))
 
 $(ALLFILES): $(PLATFORMS_FILES) $(OBJECTS)
-	lua ../genfilelist.lua $^ >$@
+	$(LUA) ../genfilelist.lua $^ >$@
 	cat $(PLATFORMS_FLAGS) >$(ALLFLAGS)
 
 evdev/$(ALLFILES): forcelook

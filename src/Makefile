@@ -32,10 +32,10 @@ PLATFORM_LIBRARY_FILES=platform/$(ALLFILES)
 PLATFORM_LIBRARY_FLAGS=platform/$(ALLFLAGS)
 
 __all_common__.files: $(COMMON_LIBRARY_FILES)
-	lua genfilelist.lua $^ >$@
+	$(LUA) genfilelist.lua $^ >$@
 
 __all_platform__.files: $(PLATFORM_LIBRARY_FILES)
-	lua genfilelist.lua $^ >$@
+	$(LUA) genfilelist.lua $^ >$@
 
 core/$(ALLFILES): forcelook cmdhelp/$(ALLFILES)
 	$(MAKE) -C core

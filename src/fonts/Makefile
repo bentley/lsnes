@@ -3,7 +3,7 @@ OBJECTS=font.$(OBJECT_SUFFIX) wrapper.$(OBJECT_SUFFIX)
 .PRECIOUS: %.$(OBJECT_SUFFIX) %.files
 
 __all__.files: $(OBJECTS)
-	lua ../genfilelist.lua $^ >$@
+	$(LUA) ../genfilelist.lua $^ >$@
 	touch __all__.ldflags
 
 .PRECIOUS: font.$(OBJECT_SUFFIX) font.cpp

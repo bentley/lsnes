@@ -17,7 +17,7 @@ endif
 .PRECIOUS: %.$(OBJECT_SUFFIX)
 
 __all__.files: $(OBJECTS)
-	lua ../../genfilelist.lua $^ >$@
+	$(LUA) ../../genfilelist.lua $^ >$@
 	echo $(WXW_LDFLAGS) >__all__.ldflags
 
 %.$(OBJECT_SUFFIX): %.cpp %.cpp.dep

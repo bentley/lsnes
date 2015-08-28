@@ -3,7 +3,7 @@ OBJECTS=$(patsubst %.cpp,%.$(OBJECT_SUFFIX),$(wildcard *.cpp))
 .PRECIOUS: %.$(OBJECT_SUFFIX) %.files
 
 __all__.files: codec/__all__.files $(OBJECTS)
-	lua ../../genfilelist.lua $^ >$@
+	$(LUA) ../../genfilelist.lua $^ >$@
 
 codec/__all__.files: forcelook
 	$(MAKE) -C codec

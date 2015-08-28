@@ -3,7 +3,7 @@ OBJECTS=
 .PRECIOUS: %.$(OBJECT_SUFFIX) %.files
 
 __all__.files: audio/__all__.files video/__all__.files $(OBJECTS)
-	lua ../../../genfilelist.lua $^ >$@
+	$(LUA) ../../../genfilelist.lua $^ >$@
 
 audio/__all__.files: forcelook
 	$(MAKE) -C audio

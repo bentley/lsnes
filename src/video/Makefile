@@ -8,7 +8,7 @@ endif
 .PRECIOUS: %.$(OBJECT_SUFFIX) %.files
 
 __all__.files: avi/__all__.files $(OBJECTS)
-	lua ../genfilelist.lua $^ >$@
+	$(LUA) ../genfilelist.lua $^ >$@
 	echo $(AVI_LDFLAGS) >__all__.ldflags
 
 avi/__all__.files: forcelook

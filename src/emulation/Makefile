@@ -5,7 +5,7 @@ CORES_FILES=$(patsubst %,%/$(ALLFILES),$(CORES))
 CORES_FLAGS=$(patsubst %,%/$(ALLFLAGS),$(CORES))
 
 __all__.files: $(CORES_FILES)
-	lua ../genfilelist.lua $^ >$@
+	$(LUA) ../genfilelist.lua $^ >$@
 	cat $(CORES_FLAGS) >$(ALLFLAGS)
 
 make-ports$(DOT_EXECUTABLE_SUFFIX): make-ports.cpp ../library/json.cpp ../library/utf8.cpp ../library/string.cpp ../library/portctrl-parse.cpp ../library/portctrl-data.cpp ../library/sha256.cpp ../library/assembler.cpp  ../library/hex.cpp  ../library/eatarg.cpp ../library/int24.cpp ../library/binarystream.cpp ../library/integer-pool.cpp  ../library/memtracker.cpp

@@ -3,7 +3,7 @@ OBJECTS=$(patsubst %.cpp,%.$(OBJECT_SUFFIX),$(wildcard *.cpp))
 .PRECIOUS: %.$(OBJECT_SUFFIX) %.files
 
 __all__.files: $(OBJECTS)
-	lua ../../../../genfilelist.lua $^ >$@
+	$(LUA) ../../../../genfilelist.lua $^ >$@
 
 %.$(OBJECT_SUFFIX): %.cpp %.cpp.dep
 	$(REALCC) $(CFLAGS) -c -o $@ $< -I../../../../../include

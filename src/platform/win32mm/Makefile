@@ -7,7 +7,7 @@ endif
 .PRECIOUS: %.$(OBJECT_SUFFIX) %.files
 
 __all__.files: $(OBJECTS)
-	lua ../../genfilelist.lua $^ >$@
+	$(LUA) ../../genfilelist.lua $^ >$@
 	touch __all__.ldflags
 
 %.$(OBJECT_SUFFIX): %.cpp %.cpp.dep

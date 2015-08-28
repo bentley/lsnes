@@ -3,7 +3,7 @@ OBJECTS=test.$(OBJECT_SUFFIX)
 .PRECIOUS: %.$(OBJECT_SUFFIX) %.files
 
 __all__.files: $(OBJECTS)
-	lua ../../genfilelist.lua $^ >$@
+	$(LUA) ../../genfilelist.lua $^ >$@
 	echo  >__all__.ldflags
 
 ports.inc: ports.json ../make-ports$(DOT_EXECUTABLE_SUFFIX)

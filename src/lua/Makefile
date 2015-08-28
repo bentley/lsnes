@@ -3,11 +3,11 @@ OBJECTS=$(patsubst %.cpp,%.$(OBJECT_SUFFIX),$(wildcard *.cpp)) sysrc.$(OBJECT_SU
 .PRECIOUS: %.$(OBJECT_SUFFIX) %.files
 
 __all__.files: $(OBJECTS)
-	lua ../genfilelist.lua $^ >$@
+	$(LUA) ../genfilelist.lua $^ >$@
 	echo >__all__.ldflags
 
 sysrc.cpp: sysrc.lua
-	luac -p $<
+	$(LUAC) -p $<
 	../../buildaux/txt2cstr$(DOT_EXECUTABLE_SUFFIX) lua_sysrc_script $< >$@
 
 sysrc.cpp.dep: sysrc.cpp

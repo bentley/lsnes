@@ -28,7 +28,7 @@ BSNES_LIBRARY=bsnes/out/libsnes.$(ARCHIVE_SUFFIX)
 .PRECIOUS: %.$(OBJECT_SUFFIX) %.files
 
 __all__.files: $(OBJECTS) ../../../$(BSNES_LIBRARY)
-	lua ../../genfilelist.lua $^ >$@
+	$(LUA) ../../genfilelist.lua $^ >$@
 	echo $(BSNES_LDFLAGS) ../$(BSNES_LIBRARY) >__all__.ldflags
 
 ../../../$(BSNES_LIBRARY): forcelook
@@ -46,7 +46,7 @@ else
 
 OBJECTS=
 __all__.files: $(OBJECTS)
-	lua ../../genfilelist.lua $^ >$@
+	$(LUA) ../../genfilelist.lua $^ >$@
 	echo >__all__.ldflags
 
 endif
